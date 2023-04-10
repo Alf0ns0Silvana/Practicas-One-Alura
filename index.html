@@ -4,9 +4,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Prácticas Lógica de programacion - One+Alura</title>
 </head>
-<body>
+<body>  
+    <h1> Programa - Año mundial de la Fifa</h1>
+    <script>
+        function saltarLinea(){
+            document.write("<br>");
+            document.write("<br>");
+            document.write("<br>");
+        }
+        function imprimir(frase) {
+            document.write(frase);
+            saltarLinea();
+        }
+        var anhoMundial = 1930;
+        var limite = parseInt(prompt("Ingrese el año limite para calcular"))
+
+            while(anhoMundial <= limite){ // cumple una condición e itera constantemente hasta 
+                // que se deja de cumplir 
+                imprimir("Hubo mundial en el año " + anhoMundial);
+                anhoMundial = anhoMundial + 4;
+            }
+
+        imprimir("Fin")
+
+    </script>
     
 </body>
 </html>
