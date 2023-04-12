@@ -7,67 +7,31 @@
     <title>Prácticas Lógica de programacion - One+Alura</title>
 </head>
 <body>  
-    <input/>
-    <button> Verificar si acertó con el secreto </button>
+
+    <h1>Recetas</h1>
 
     <script>
+        var ingredientes = [];
+        var cantidad = parseInt(prompt("¿Cuántos ingredientes vas a añadir?"));
+        var contador = 1;
 
-        function aleatorio(){
-            return Math.round(Math.random()*10);
-        }
-        function sortearNumeros(cantidad){
-            let secretos = [];
-            let contador = 1;
-            while(contador<=cantidad){
-                let numeroAleatorio = aleatorio();
-                console.log(numeroAleatorio);
-                let encontrado = false;
-
-                if(numeroAleatorio !=0){
-                    for (let position = 0; position < secretos.length; position++) {
-                    if (numeroAleatorio == secretos[position]){
-                        encontrado = true;
-                        break;
-                    }
-                }
-                if (encontrado == false) {
-                    secretos.push(numeroAleatorio);
-                    contador++;
-                }
-                }
-
-
-            }
-            return secretos
-        }
-         let secretos = sortearNumeros(4);
-         console.log(secretos);
-
-
-        let input = document.querySelector("input");
-        input.focus();
-        function verificar(){
-
-        let encontrado = false;
-
-            for ( let position = 0; position < secretos.length; position++){
-                if(parseInt(input.value) == secretos[position]){
-                    alert("Acertó!");
-                    encontrado = true;
+        while(contador <= cantidad) {
+            var ingrediente = prompt("Informe el ingrediente " + contador);
+            var existe = false;
+            for(var posicion = 0; posicion < ingredientes.length; posicion++) {
+                if(ingredientes[posicion] == ingrediente){
+                    existe = true;
+                alert("repetido " + ingrediente);
                     break;
                 }
-            }
-            if (encontrado == false){
-                alert("Erró :(");
-            }
-            input.value = "";
-            input.focus();
+                }
+                    if(existe == false) {
+                    ingredientes.push(ingrediente);
+                    contador++;
+                    }
         }
-
-        let button = document.querySelector("button");
-        button.onclick = verificar;
-                
+        console.log(ingredientes);  
+         
     </script>
-    
 </body>
 </html>
