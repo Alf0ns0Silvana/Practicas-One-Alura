@@ -11,22 +11,34 @@
     <button> Verificar si acertó con el secreto </button>
 
     <script>
-        let secreto = Math.round(Math.random()*10);
+
+        let secretos = [3,5,7,9];
+
         let input = document.querySelector("input");
         input.focus();
-        function verificar() {
-            if (parseInt(input.value) === secreto) {
-                alert("Acertó! :) ");
-            }
-            else {
-                alert("Erró :( ");
-            }
-            input.value = "";
-            input.focus();
-        }
 
+        function verificar(){
+
+            let encontrado = false;
+
+                for ( let position = 0; position < secretos.length; position++){
+                    if(parseInt(input.value) == secretos[position]){
+                        alert("Acertó!");
+                        encontrado = true;
+                        break;
+                    }
+                }
+                if (encontrado == false){
+                    alert("Erró :(");
+                }
+                input.value = "";
+                input.focus();
+        }
+        
         let button = document.querySelector("button");
         button.onclick = verificar;
+        
+
     </script>
     
 </body>
