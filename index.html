@@ -12,33 +12,61 @@
 
     <script>
 
-        let secretos = [3,5,7,9];
+        function aleatorio(){
+            return Math.round(Math.random()*10);
+        }
+        function sortearNumeros(cantidad){
+            let secretos = [];
+            let contador = 1;
+            while(contador<=cantidad){
+                let numeroAleatorio = aleatorio();
+                console.log(numeroAleatorio);
+                let encontrado = false;
 
-        let input = document.querySelector("input");
-        input.focus();
-
-        function verificar(){
-
-            let encontrado = false;
-
-                for ( let position = 0; position < secretos.length; position++){
-                    if(parseInt(input.value) == secretos[position]){
-                        alert("Acertó!");
+                if(numeroAleatorio !=0){
+                    for (let position = 0; position < secretos.length; position++) {
+                    if (numeroAleatorio == secretos[position]){
                         encontrado = true;
                         break;
                     }
                 }
-                if (encontrado == false){
-                    alert("Erró :(");
+                if (encontrado == false) {
+                    secretos.push(numeroAleatorio);
+                    contador++;
                 }
-                input.value = "";
-                input.focus();
+                }
+
+
+            }
+            return secretos
         }
-        
+         let secretos = sortearNumeros(4);
+         console.log(secretos);
+
+
+        let input = document.querySelector("input");
+        input.focus();
+        function verificar(){
+
+        let encontrado = false;
+
+            for ( let position = 0; position < secretos.length; position++){
+                if(parseInt(input.value) == secretos[position]){
+                    alert("Acertó!");
+                    encontrado = true;
+                    break;
+                }
+            }
+            if (encontrado == false){
+                alert("Erró :(");
+            }
+            input.value = "";
+            input.focus();
+        }
+
         let button = document.querySelector("button");
         button.onclick = verificar;
-        
-
+                
     </script>
     
 </body>
