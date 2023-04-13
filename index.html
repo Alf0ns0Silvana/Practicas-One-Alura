@@ -7,37 +7,34 @@
     <title>Prácticas Animaciones y juegos - One+Alura</title>
 </head>
 <body>  
+
     <canvas width="600" height="400"> </canvas>
+
     <script>
-
+    
         var pantalla = document.querySelector("canvas");
-        var pincel = pantalla.getContext("2d");
+        var pincel = pantalla.getContext("2d");    
+        pincel.fillStyle = "grey";
+        pincel.fillRect(0,0,600,400); 
 
-        pincel.fillStyle= "grey";
-        pincel.fillRect(0,0,600,400);
-
-        function exhibirAlerta(evento){
-            let x = evento.pageX - pantalla.offsetLeft;
-            let y = evento.pageY - pantalla.offsetTop;
-// dentro de la var pantalla."offsetX" resta lo que sobra en eje X a la left 
-// y en eje Y al top, p q me cuente desde 0.0 al hacer click y no tome el 
-// margen blanco.
-            console.log(evento);
-            alert(x + "," + y);
-        }
-
-        function dibujarCirculo(evento){
-            let x = evento.pageX - pantalla.offsetLeft;
-            let y = evento.pageY - pantalla.offsetTop;
+        function disenharCircunferencia(x,y,radio){ // ejes y radio
             pincel.fillStyle = "blue";
             pincel.beginPath();
-            pincel.arc(x,y,10,0,2*3.14);
+            pincel.arc(x,y,radio,0,2*Math.PI); // grafica circunf, parametros 5 coordenadas x/y, radio, angulo inicial y angulo final
             pincel.fill();
-            console.log(x + "," + y);
         }
 
-        pantalla.onclick = dibujarCirculo;
+        function limpiarPantalla (){
+            pincel.clearRect(0,0,600,400);
+        }
 
+        let x = 0;
+        function actualizarPantalla(){
+            limpiarPantalla();
+            disenharCircunferencia(x,20,10);
+            x++;
+        }
+        setInterval(actualizarPantalla, 80);     
 
     </script>
 </body>
