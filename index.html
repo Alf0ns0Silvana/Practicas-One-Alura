@@ -7,31 +7,35 @@
     <title>Prácticas Lógica de programacion - One+Alura</title>
 </head>
 <body>  
-
-    <h1>Recetas</h1>
+    <canvas width="600" height="400"> </canvas>
 
     <script>
-        var ingredientes = [];
-        var cantidad = parseInt(prompt("¿Cuántos ingredientes vas a añadir?"));
-        var contador = 1;
+        let pantalla = document.querySelector("canvas");
+        let pincel = pantalla.getContext("2d"); // "2d" dos dimensiones, ancho y largo / "getContext" trae todo el contenido.
+                                        //"fillStyle" es una propiedad, color
+        pincel.fillStyle = "lightgrey";
+                                        //"filRect" es una funcion, llenar rectangulo (4 parametros)
+        pincel.fillRect(0,0,600,400);   // posicion 0,0 en los 2 primeros parametros
+                                        // eje X y eje Y, 600 eje -X horizontal- y 400 eje -Y vertical- 
+        pincel.fillStyle = "green";
+        pincel.fillRect(0,0,200,400); 
 
-        while(contador <= cantidad) {
-            var ingrediente = prompt("Informe el ingrediente " + contador);
-            var existe = false;
-            for(var posicion = 0; posicion < ingredientes.length; posicion++) {
-                if(ingredientes[posicion] == ingrediente){
-                    existe = true;
-                alert("repetido " + ingrediente);
-                    break;
-                }
-                }
-                    if(existe == false) {
-                    ingredientes.push(ingrediente);
-                    contador++;
-                    }
-        }
-        console.log(ingredientes);  
-         
+        pincel.fillStyle = "red";
+        pincel.fillRect(400,0,200,400); 
+
+        pincel.fillStyle = "yellow";
+        pincel.beginPath(); // inicia un camino con el lapiz siguiendo instrucciones
+        pincel.moveTo(300,200); //Se mueve a esas coordenadas (centro de la caja)
+        pincel.lineTo(200,400); // Desde ahi dibuja linea a dnd quiera 
+        pincel.lineTo(400,400); 
+        pincel.fill();
+
+        pincel.fillStyle = "blue";
+        pincel.beginPath();
+        pincel.arc(300,200,50,0,2*3.14); //Grafica circunferencias, parametro 1y2 posicion inicial (centro 300,200), param 3 tamaño 
+                                //circulo en radio (50) y por ultimo angulo inicial (0) y 2 veces pi (2*3.14)
+        pincel.fill();
+
     </script>
 </body>
 </html>
