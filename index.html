@@ -9,43 +9,35 @@
 <body>  
     <canvas width="600" height="400"> </canvas>
     <script>
-function dibujarRectangulo(x, y, base, altura, color) {
+
         var pantalla = document.querySelector("canvas");
         var pincel = pantalla.getContext("2d");
 
-        pincel.fillStyle=color;
-        pincel.fillRect(x,y, base, altura);
-        pincel.strokeStyle="black";
-        pincel.strokeRect(x,y, base, altura);
-    }
+        pincel.fillStyle= "grey";
+        pincel.fillRect(0,0,600,400);
 
-    function escribirTexto(x , y, texto) {
-        var pantalla = document.querySelector("canvas");
-        var pincel = pantalla.getContext("2d");
-
-        pincel.font="15px Georgia";
-        pincel.fillStyle="black";
-        pincel.fillText(texto, x, y);    
-    }
-
-    function dibujarBarra(x, y, serie, colores, texto) {
-
-        escribirTexto(x, y - 10, texto);
-
-        var sumaAltura = 0;
-        for (var i = 0; i < serie.length; i++) {
-            var altura = serie[i];
-            dibujarRectangulo(x, y + sumaAltura, 50, altura, colores[i]);
-            sumaAltura = sumaAltura + altura;
+        function exhibirAlerta(evento){
+            let x = evento.pageX - pantalla.offsetLeft;
+            let y = evento.pageY - pantalla.offsetTop;
+// dentro de la var pantalla."offsetX" resta lo que sobra en eje X a la left 
+// y en eje Y al top, p q me cuente desde 0.0 al hacer click y no tome el 
+// margen blanco.
+            console.log(evento);
+            alert(x + "," + y);
         }
-    }
 
-    var colores = ["blue","green","yellow", "red","gray"];
-    var serie2009 = [6,47,41,3,3];
-    var serie2019 = [81,9,3,3,4];
+        function dibujarCirculo(evento){
+            let x = evento.pageX - pantalla.offsetLeft;
+            let y = evento.pageY - pantalla.offsetTop;
+            pincel.fillStyle = "blue";
+            pincel.beginPath();
+            pincel.arc(x,y,10,0,2*3.14);
+            pincel.fill();
+            console.log(x + "," + y);
+        }
 
-    dibujarBarra(50, 50, serie2009, colores, "2009");
-    dibujarBarra(150, 50, serie2019, colores, "2019");
+        pantalla.onclick = dibujarCirculo;
+
 
     </script>
 </body>
