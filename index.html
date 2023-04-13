@@ -4,38 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prácticas Lógica de programacion - One+Alura</title>
+    <title>Prácticas Animaciones y juegos - One+Alura</title>
 </head>
 <body>  
     <canvas width="600" height="400"> </canvas>
-
     <script>
-        let pantalla = document.querySelector("canvas");
-        let pincel = pantalla.getContext("2d"); // "2d" dos dimensiones, ancho y largo / "getContext" trae todo el contenido.
-                                        //"fillStyle" es una propiedad, color
-        pincel.fillStyle = "lightgrey";
-                                        //"filRect" es una funcion, llenar rectangulo (4 parametros)
-        pincel.fillRect(0,0,600,400);   // posicion 0,0 en los 2 primeros parametros
-                                        // eje X y eje Y, 600 eje -X horizontal- y 400 eje -Y vertical- 
-        pincel.fillStyle = "green";
-        pincel.fillRect(0,0,200,400); 
 
-        pincel.fillStyle = "red";
-        pincel.fillRect(400,0,200,400); 
-
-        pincel.fillStyle = "yellow";
-        pincel.beginPath(); // inicia un camino con el lapiz siguiendo instrucciones
-        pincel.moveTo(300,200); //Se mueve a esas coordenadas (centro de la caja)
-        pincel.lineTo(200,400); // Desde ahi dibuja linea a dnd quiera 
-        pincel.lineTo(400,400); 
-        pincel.fill();
-
-        pincel.fillStyle = "blue";
-        pincel.beginPath();
-        pincel.arc(300,200,50,0,2*3.14); //Grafica circunferencias, parametro 1y2 posicion inicial (centro 300,200), param 3 tamaño 
-                                //circulo en radio (50) y por ultimo angulo inicial (0) y 2 veces pi (2*3.14)
-        pincel.fill();
-
+        var pantalla = document.querySelector("canvas");
+        var pincel = pantalla.getContext("2d");
+        //cabeza
+        pincel.fillStyle = 'darkgreen';
+        pincel.fillRect(200, 50, 350 ,300);
+        //ojos
+        pincel.fillStyle = 'black';
+        pincel.fillRect(250, 110, 90, 90);
+        pincel.fillRect(410, 110, 90, 90);
+        //nariz
+        pincel.fillRect(340, 200, 70, 100);
+         //boca
+        pincel.fillRect(300, 240, 40, 110);
+        pincel.fillRect(410, 240, 40, 110);
     </script>
+
 </body>
 </html>
